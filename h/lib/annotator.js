@@ -1,12 +1,12 @@
 /*
-** Annotator 1.2.6-dev-ca14844
+** Annotator 1.2.6-dev-1eeb4ab
 ** https://github.com/okfn/annotator/
 **
 ** Copyright 2012 Aron Carroll, Rufus Pollock, and Nick Stenning.
 ** Dual licensed under the MIT and GPLv3 licenses.
 ** https://github.com/okfn/annotator/blob/master/LICENSE
 **
-** Built at: 2013-05-03 17:03:28Z
+** Built at: 2013-05-17 18:29:26Z
 */
 
 (function() {
@@ -2287,10 +2287,8 @@
     };
 
     Annotator.prototype.checkForStartSelection = function(event) {
-      if (!(event && this.isAnnotator(event.target))) {
-        this.startViewerHideTimer();
-        return this.mouseIsDown = true;
-      }
+      if (!(event && this.isAnnotator(event.target))) this.startViewerHideTimer();
+      return this.mouseIsDown = true;
     };
 
     Annotator.prototype.checkForEndSelection = function(event) {
@@ -2312,7 +2310,7 @@
         range = (Range.sniff(selector)).normalize(this.wrapper[0]);
         container = range.commonAncestor;
         if ($(container).hasClass('annotator-hl')) {
-          container = $(container).parents('[class^=annotator-hl]')[0];
+          container = $(container).parents(':not([class^=annotator-hl])')[0];
         }
         if (this.isAnnotator(container)) return;
       }

@@ -258,8 +258,7 @@ class Annotator.Host extends Annotator
     # Override to prevent Annotator choking when this ties to access the
     # viewer but preserve the manipulation of the attribute `mouseIsDown` which
     # is needed for preventing the panel from closing while annotating.
-    unless event and this.isAnnotator(event.target)
-      @mouseIsDown = true
+    @mouseIsDown = true
 
   addToken: (token) =>
     @api.notify
