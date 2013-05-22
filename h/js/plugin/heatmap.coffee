@@ -236,7 +236,7 @@ class Annotator.Plugin.Heatmap extends Annotator.Plugin
       "#{(@index[d] + @index[d+1]) / 2}px"
 
     .html (d) =>
-      "<div class='label'>#{@buckets[d].total}</div><div class='svg'></div>"
+      "<div tabindex='999' role='button' onkeyup='clickAdapter(event)' aria-label='#{@buckets[d].total} annotations' class='label'>#{@buckets[d].total}</div><div class='svg'></div>"
 
     .classed('upper', @isUpper)
     .classed('lower', @isLower)

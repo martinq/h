@@ -7,6 +7,14 @@
           type="application/annotatorsvc+json"
           tal:attributes="href service_url"
           tal:condition="service_url | nothing" />
+
+    <script type="text/javascript">
+        function clickAdapter(evt) {
+          if (event.keyCode == 13) {
+            evt.srcElement.click();
+          }
+        }
+    </script>
   </head>
   <body ng-app="h"
         ng-controller="AppController"
@@ -16,9 +24,9 @@
     <!-- Toolbar -->
     <div class="topbar" class="form-inline" ng-class="frame.visible && 'shown'">
 
-      <div class="tri" ng-click="frame.visible = !frame.visible"></div>
+      <div class="tri" tabindex="998" aria-label="Annotation Drawer" role="button" onkeyup="clickAdapter(event)" ng-click="frame.visible = !frame.visible"></div>
 
-      <div class="inner">
+      <div class="inner" aria-live="polite">
         <a class="pull-right tinyman" href=""
            ng-click="sheet.collapsed = false;
                      sheet.tab = 'login';"
